@@ -3,6 +3,11 @@ var scores = [60, 50, 60, 58, 54, 54,
               34, 55, 51, 52, 44, 51,
               69, 64, 66, 55, 52, 61];
 
+var costs = [.25, .27, .25, .25, .25, .25,
+             .33, .31, .25, .29, .27, .22,
+             .31, .25, .25, .33, .21, .25,
+             .25, .25, .28, .25, .24, .22];
+
 function printAndGetHighScore(scores) {
   var highScore = 0;
   var output;
@@ -36,6 +41,24 @@ function getBestResults(scores, highScore) {
   return bestSolutions
 }
 
+
+// Get most cost effective solution
+function getMostCostEffectiveSolution(scores, costs, highScore) {
+  var cost = 100;
+  var index;
+  for (var i = 0; i < scores.length; i++ ) {
+    // if the value of scores is equal to the highScore
+    if ( scores[i] == highScore) {
+      //if current value of cost is greater than the costs value in array
+      if (cost > costs[i]) {
+        index = i;
+        cost = costs [i];
+      }
+  }
+}
+  return index;
+}
+
 var highScore = printAndGetHighScore(scores);
 
 // Display how many tests ( the length of the scores array)
@@ -46,3 +69,7 @@ console.log("Highest bubble score: " + highScore);
 var bestSolutions = getBestResults(scores, highScore);
 // Display the solutions with the highest score
 console.log("Solutions with the highest score:" + bestSolutions);
+
+// Display most cost effective solution
+var mostCostEffective = getMostCostEffectiveSolution(scores, costs, highScore);
+console.log("Bubble solution #" + mostCostEffective + " is the most cost effective");
