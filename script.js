@@ -23,3 +23,17 @@ console.log("Bubbles test: " + scores.length);
 
 //Display the highest score
 console.log("Highest bubble score: " + highScore);
+
+
+//Display the Solutions with the highest scores
+//variable containing a empty array
+var bestSolutions = [];
+//itterate through the scores
+for (var i = 0; i < scores.length; i++) {
+  // if the scores value is equal to the highscore
+  if (scores[i] == highScore) {
+    //push the scores index number to the bestSolutions array
+    bestSolutions.push(i);
+  }
+}
+console.log("Solutions with the highest score: " + bestSolutions);
